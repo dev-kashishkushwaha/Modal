@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Modal</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: Arial, Helvetica, sans-serif;
+	  -webkit-tap-highlight-color:transparent;  
+	}
+
+	body {
+		background-color: white;
+	}
+
+	.modals {
+		height: 100vh;
+		width: 100%;
+		position: fixed;
+		transform: scale(0);
+		transition: all .3s;
+		top: 0;
+		bottom: 0;
+	}
+
+	.modals.open {
+		transform: scale(1);
+	}
+
+
+
+	.modals .bg {
+		height: 100vh;
+		width: 100%;
+		background-color: #000000;
+		opacity: 0;
+		position: fixed;
+		z-index: 9;
+		transition: all .1s;
+	}
+
+	.modals.open .bg {
+		opacity: 0.3;
+
+	}
+
+	.modals .modal {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		
+	}
+
+	.modals .modal form {
+		position: relative;
+		z-index: 10;
+		height: 400px;
+		background-color: white;
+		padding: 20px;
+		border-radius: 20px;
+		box-shadow: 0px 0px 15px 7px #0000000a;
+	}
+
+	.modals .modal form .header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #e7e7e7;
+		color: #555a5f;
+	}
+
+	.modals .modal form .title {}
+
+	.modals .modal form i {
+		cursor: pointer;
+		padding: 10px;
+	}
+
+	.modals .modal form .inputs {
+		margin: 30px 5px 0 5px;
+	}
+
+	.modals .modal form .inputs .row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 20px;
+	}
+
+	.modals .modal form .inputs .row label {
+		width: 130px;
+		color: #65696d;
+	}
+
+
+	.modals .modal form .inputs .row input {
+		width: 100%;
+		height: 40px;
+		margin-left: 30px;
+		border: 1px solid #bbbbbb;
+		border-radius: 7px;
+		box-sizing: border-box;
+		padding: 10px;
+	}
+
+	.modals .modal form .inputs .row input:focus {
+		outline: none;
+		border: 1px solid #747474;
+	}
+
+
+	.modals .modal form .action {
+		margin-top: 60px;
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.modals .modal form .action button[type=button] {
+		margin-right: 10px;
+		height: 35px;
+		padding: 0 10px;
+		border: none;
+		background-color: #909eaa;
+		color: white;
+		border-radius: 7px;
+		cursor: pointer;
+	}
+
+	.modals .modal form .action button[type=submit] {
+		padding: 0 10px;
+		border: none;
+		background-color: #0088ff;
+		color: white;
+		border-radius: 7px;
+		cursor: pointer;
+	}
+
+
+	/* ================ Login ============= */
+
+	.login {
+		padding: 15px 20px;
+		width: max-content;
+		background-color: #0088ff;
+		color: white;
+		margin: 120px auto;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+</style>
+
+
+<body>
+
+
+	<div class="login" onclick="modal()">
+		Create Account
+	</div>
+
+
+	<div class="modals" id="modals">
+
+		<div class="bg"></div>
+
+		<div class="modal">
+
+			<form action="">
+
+				<div class="header">
+					<div class="title">Model Form</div>
+
+					<i class="fa-solid fa-xmark" onclick="modal()"></i>
+
+				</div>
+
+				<div class="inputs">
+
+					<div class="row">
+						<label for="name">Name</label>
+						<input type="text" placeholder="Name" id="name" required>
+					</div>
+
+					<div class="row">
+						<label for="email">Email</label>
+						<input type="email" placeholder="Email" id="email" required>
+					</div>
+
+
+					<div class="row">
+						<label for="pass">Password</label>
+						<input type="password" placeholder="Password" id="pass" required>
+					</div>
+
+					<div class="row">
+						<label for="cpass">Confirm Password</label>
+						<input type="password" placeholder="Confirm Password" id="cpass" required>
+					</div>
+				</div>
+
+				<div class="action">
+					<button type="button" onclick="modal()">Close</button>
+					<button type="submit">Save Changes</button>
+				</div>
+
+			</form>
+
+		</div>
+
+
+	</div>
+
+
+	<script>
+
+		function modal() {
+			let modals = document.querySelector("#modals");
+			modals.classList.toggle("open");
+		}
+
+
+	</script>
+
+
+</body>
+
+</html>
